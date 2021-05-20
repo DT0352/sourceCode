@@ -116,3 +116,14 @@ buildNumber.properties
 # ignore eclipse files
 .metadata
 mvnw
+# Maven #
+target/
+
+# IDEA #
+.idea/
+*.iml
+
+# Eclipse #
+.settings/
+.classpath
+.project
