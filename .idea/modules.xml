@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/sourcecodeshiro/sourcecodeshiro.iml" filepath="$PROJECT_DIR$/sourcecodeshiro/sourcecodeshiro.iml" />
+      <module fileurl="file://$PROJECT_DIR$/source_code_shiro/source_code_shiro.iml" filepath="$PROJECT_DIR$/source_code_shiro/source_code_shiro.iml" />
     </modules>
   </component>
 </project>

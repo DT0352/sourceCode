@@ -8,8 +8,6 @@ public class SourcecodeshiroApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SourcecodeshiroApplication.class, args);
-        System.out.println(123);
     }
-
 
 }
