@@ -127,3 +127,4 @@ target/
 .settings/
 .classpath
 .project
+.libraries
