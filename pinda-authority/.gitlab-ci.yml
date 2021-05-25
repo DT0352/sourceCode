@@ -1,0 +1,30 @@
+stages:
+    - build
+    - run
+server-package:
+    stage: build
+    script:
+        - source /etc/profile
+        - /usr/local/apache-maven-3.6.3/bin/mvn clean install -f pd-tools/pom.xml -Dmaven.test.skip=true
+        - /usr/local/apache-maven-3.6.3/bin/mvn clean package -f pd-apps/pom.xml -P test -Dmaven.test.skip=true
+        - docker build -t pinda-authority/gateway --build-arg PACKAGE_PATH=pd-apps/pd-gateway/target/*.jar --build-arg EXPOSE_PORT=8760 .
+        - docker build -t pinda-authority/auth-server --build-arg PACKAGE_PATH=pd-apps/pd-auth/pd-auth-server/target/*.jar --build-arg EXPOSE_PORT=8764 .
+        - docker build -t pinda-authority/file-server --build-arg PACKAGE_PATH=pd-apps/pd-file/pd-file-server/target/*.jar --build-arg EXPOSE_PORT=8765 .
+        - docker build -t pinda-authority/goods-server --build-arg PACKAGE_PATH=pd-apps/pd-goods/pd-goods-server/target/*.jar --build-arg EXPOSE_PORT=8767 .
+    only:
+        - master
+    tags:
+        - auth-runner
+server-runner:
+    stage: run
+    script:
+        - pwd
+        - docker rm -f $(docker ps -a |  grep "pinda-authority*"  | awk '{print $1}')
+        - docker run -d -p 8760:8760 --name pinda-authority-gateway pinda-authority/gateway
+        - docker run -d -p 8764:8764 --name pinda-authority-auth-server pinda-authority/auth-server
+        - docker run -d -p 8765:8765 -v /data/projects/uploadfile/file:/data/projects/uploadfile/file --name pinda-authority-file-server pinda-authority/file-server
+        - docker run -d -p 8767:8767 --name pinda-authority-goods-server pinda-authority/goods-server
+    only:
+        - master
+    tags:
+        - auth-runner

@@ -5,6 +5,11 @@
       <list>
         <option value="$PROJECT_DIR$/sourcecodeshiro/pom.xml" />
         <option value="$PROJECT_DIR$/source_code_shiro/pom.xml" />
+        <option value="$PROJECT_DIR$/source_code_shiro_renren_fast/renren-fast/pom.xml" />
+        <option value="$PROJECT_DIR$/springmvc_demo/pom.xml" />
+        <option value="$PROJECT_DIR$/pinda-authority/pom.xml" />
+        <option value="$PROJECT_DIR$/pinda-authority/pd-apps/pom.xml" />
+        <option value="$PROJECT_DIR$/pinda-authority/pd-tools/pom.xml" />
       </list>
     </option>
   </component>
