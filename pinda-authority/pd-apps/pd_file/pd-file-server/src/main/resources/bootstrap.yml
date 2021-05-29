@@ -29,7 +29,7 @@ spring:
 
 logging:
   file:
-    path: /data/projects/logs
+    path: /Users/fuzhidong/dev/sourceCode/pinda-authority/data/projects/logs
     name: ${logging.file.path}/${spring.application.name}/root.log
 
 info:

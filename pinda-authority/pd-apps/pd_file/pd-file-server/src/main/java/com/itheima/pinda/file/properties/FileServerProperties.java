@@ -5,6 +5,7 @@ import com.itheima.pinda.utils.StrPool;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.stereotype.Component;
 
 /**
  *文件策略配置属性类
@@ -12,6 +13,7 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 @Data
 @ConfigurationProperties(prefix = "pinda.file")
 @RefreshScope
+@Component
 public class FileServerProperties {
     /**
      * 为以下3个值，指定不同的自动化配置
