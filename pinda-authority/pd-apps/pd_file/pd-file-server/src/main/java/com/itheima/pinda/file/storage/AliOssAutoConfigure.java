@@ -11,8 +11,9 @@ import com.itheima.pinda.file.properties.FileServerProperties;
 import com.itheima.pinda.file.strategy.impl.AbstractFileStrategy;
 import com.itheima.pinda.utils.DateUtils;
 import com.itheima.pinda.utils.StrPool;
-import com.qiniu.util.StringUtils;
+
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
@@ -45,10 +46,23 @@ public class AliOssAutoConfigure {
     @Service
     public class AliServiceImpl extends AbstractFileStrategy {
         private OSS getOssClient() {
+            properties = fileServerProperties.getAli();
             return new OSSClientBuilder().build(
                     properties.getEndpoint(),
                     properties.getAccessKeyId(),
                     properties.getAccessKeySecret());
+        }
+        @Override
+        protected String getUriPrefix() {
+            if (StringUtils.isNotEmpty(properties.getUriPrefix())) {
+                return properties.getUriPrefix();
+            } else {
+                String prefix = properties.
+                        getEndpoint().
+                        contains("https://") ? "https://" : "http://";
+                return prefix + properties.getBucketName() + "." +
+                        properties.getEndpoint().replaceFirst(prefix, "");
+            }
         }
 
         @Override
@@ -71,12 +85,13 @@ public class AliOssAutoConfigure {
                     StrPool.SLASH);
             relativeFileName = StrUtil.replace(relativeFileName, "\\",
                     StrPool.SLASH);
-
+            // 上传文件到阿里云OSS
             PutObjectResult objectResult = ossClient.putObject(properties.getBucketName(), relativeFileName, new ByteArrayInputStream(multipartFile.getBytes()));
             log.info("objectResult={}", JSONObject.toJSONString(objectResult));
-            String url = properties.getUriPrefix()+StrPool.SLASH + relativeFileName;
+            String url = getUriPrefix()+StrPool.SLASH + relativeFileName;
             StrUtil.replace(url,"\\\\",StrPool.SLASH);
             StrUtil.replace(url,"\\",StrPool.SLASH);
+            //写人file表
             file.setUrl(url);
             file.setFilename(fileName);
             file.setRelativePath(relativePath);

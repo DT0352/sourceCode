@@ -50,11 +50,12 @@ public class LocalAutoConfigure {
 
         @Override
         protected void uploadFile(File file, MultipartFile multipartFile) throws IOException {
+            buildCilent();
             String fileName = UUID.randomUUID().toString() + StrPool.DOT + file.getExt();
             // 相对路径
             String relativePath = Paths.get(LocalDate.now().format(DateTimeFormatter.ofPattern(DateUtils.DEFAULT_MONTH_FORMAT_SLASH))).toString();
             // 文件全路径名
-            String absolutePath = Paths.get(properties.getEndpoint(), properties.getBucketName(), relativePath, fileName).toString();
+            String absolutePath = Paths.get(properties.getUriPrefix(), properties.getBucketName(), relativePath, fileName).toString();
             java.io.File outFile = new java.io.File(absolutePath);
             // 上传文件到本地
             FileUtil.writeBytes(multipartFile.getBytes(), outFile);

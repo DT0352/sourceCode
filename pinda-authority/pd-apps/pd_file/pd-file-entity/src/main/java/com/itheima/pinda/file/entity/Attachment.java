@@ -29,6 +29,7 @@ import java.time.LocalDateTime;
 @ApiModel(value = "Attachment", description = "附件")
 public class Attachment extends Entity<Long> {
 
+
     private static final long serialVersionUID = 1L;
 
     /**

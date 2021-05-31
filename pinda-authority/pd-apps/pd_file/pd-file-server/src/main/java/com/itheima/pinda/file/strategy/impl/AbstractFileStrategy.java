@@ -11,6 +11,7 @@ import com.itheima.pinda.file.utils.FileDataTypeUtil;
 import com.itheima.pinda.utils.DateUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -71,8 +72,10 @@ public abstract class AbstractFileStrategy implements FileStrategy {
         }
 
     }
+
     /**
      * 具体上传文件的方法 子类实现
+     *
      * @param file
      * @param multipartFile
      */
@@ -101,4 +104,15 @@ public abstract class AbstractFileStrategy implements FileStrategy {
      * @param fileDeleteDO
      */
     protected abstract void deleteFile(FileDeleteDO fileDeleteDO);
+
+    /**
+     * 获取下载地址前缀
+     */
+    protected String getUriPrefix() {
+        if (StringUtils.isNotEmpty(properties.getUriPrefix())) {
+            return properties.getUriPrefix();
+        } else {
+            return properties.getEndpoint();
+        }
+    }
 }

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -30,6 +31,7 @@ public class FastDfsAutoConfigure {
     /**
      * FastDFS 处理策略类
      */
+    @Service
     public class FastDFSServiceImpl extends AbstractFileStrategy{
 
 
@@ -39,7 +41,7 @@ public class FastDfsAutoConfigure {
         @Override
         protected void uploadFile(File file, MultipartFile multipartFile) throws IOException {
             StorePath storePath = storageClient.uploadFile(multipartFile.getInputStream(), file.getSize(), file.getExt(), null);
-            file.setUrl(properties.getUriPrefix() + storePath.getFullPath());
+            file.setUrl(fileServerProperties.getUriPrefix() + storePath.getFullPath());
             file.setGroup(storePath.getGroup());
             file.setPath(storePath.getPath());
         }
