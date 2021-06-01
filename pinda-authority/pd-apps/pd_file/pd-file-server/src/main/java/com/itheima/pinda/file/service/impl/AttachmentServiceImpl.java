@@ -1,24 +1,30 @@
 package com.itheima.pinda.file.service.impl;
 
 import cn.hutool.core.util.IdUtil;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.itheima.pinda.base.id.IdGenerate;
 import com.itheima.pinda.database.mybatis.conditions.Wraps;
 import com.itheima.pinda.dozer.DozerUtils;
 import com.itheima.pinda.file.dao.AttachmentMapper;
+import com.itheima.pinda.file.domain.FileDeleteDO;
 import com.itheima.pinda.file.dto.AttachmentDTO;
 import com.itheima.pinda.file.entity.Attachment;
 import com.itheima.pinda.file.entity.File;
-import com.itheima.pinda.file.properties.FileServerProperties;
+
 import com.itheima.pinda.file.service.AttachmentService;
 import com.itheima.pinda.file.strategy.FileStrategy;
 import com.itheima.pinda.utils.DateUtils;
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 /**
@@ -62,6 +68,29 @@ public class AttachmentServiceImpl extends ServiceImpl<AttachmentMapper, Attachm
         AttachmentDTO dto = dozerUtils.map(attachment, AttachmentDTO.class);
         return dto;
     }
+
+    @Override
+    public void remove(Long[] ids) {
+        if (ids == null || ids.length == 0) {
+            return;
+        }
+        // 查询数据库
+        List<Attachment> list = super.list(Wrappers.<Attachment>lambdaQuery().in(Attachment::getId, ids));
+        if (list.isEmpty()) {
+            return;
+        }
+        List<FileDeleteDO> collect = list.stream().map((fi) -> FileDeleteDO.builder()
+                .relativePath(fi.getRelativePath())
+                .fileName(fi.getFilename())
+                .group(fi.getGroup())
+                .path(fi.getPath())
+                .build()).collect(Collectors.toList());
+        // 删除文件
+        fileStrategy.deleteFile(collect);
+        // 设置数据库
+        super.removeByIds(Arrays.asList(ids));
+    }
+
     private void setDate(Attachment file) {
         LocalDateTime now = LocalDateTime.now();
         file.setCreateMonth(DateUtils.formatAsYearMonthEn(now));

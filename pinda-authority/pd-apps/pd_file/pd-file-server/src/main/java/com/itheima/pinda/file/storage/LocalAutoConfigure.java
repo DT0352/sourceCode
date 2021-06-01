@@ -55,9 +55,10 @@ public class LocalAutoConfigure {
             // 相对路径
             String relativePath = Paths.get(LocalDate.now().format(DateTimeFormatter.ofPattern(DateUtils.DEFAULT_MONTH_FORMAT_SLASH))).toString();
             // 文件全路径名
-            String absolutePath = Paths.get(properties.getUriPrefix(), properties.getBucketName(), relativePath, fileName).toString();
+            String absolutePath = Paths.get(properties.getEndpoint(), properties.getBucketName(), relativePath, fileName).toString();
             java.io.File outFile = new java.io.File(absolutePath);
-            // 上传文件到本地
+            // 上传文件到本地ls
+
             FileUtil.writeBytes(multipartFile.getBytes(), outFile);
             // 完成File 封装  http：//ip:port/oss-file-service/2021/01/filename
             String url = new StringBuilder(properties.getUriPrefix())

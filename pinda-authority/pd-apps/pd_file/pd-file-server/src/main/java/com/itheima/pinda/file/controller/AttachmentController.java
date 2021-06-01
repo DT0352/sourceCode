@@ -10,11 +10,9 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -58,6 +56,16 @@ public class AttachmentController extends BaseController {
         AttachmentDTO attachmentDTO = attachmentService.upload(multipartFile,bizId,bizType,id,isSingle);
         return this.success(attachmentDTO);
     }
+    @ApiOperation(value = "附件删除", notes = "附件删除")
+    @ApiImplicitParams({@ApiImplicitParam(name = "ids",value = "文件ids",dataType = "array",paramType = "query")})
+    @DeleteMapping("/delete")
+    public R<Boolean> remove(@RequestParam("ids") Long[] ids){
+        attachmentService.remove(ids);
+        return this.success(true);
+    }
+
+
+
 
 
 

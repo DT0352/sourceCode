@@ -23,4 +23,11 @@ public interface AttachmentService extends IService<Attachment> {
      */
     AttachmentDTO upload(MultipartFile multipartFile, String bizId, String bizType, Long id, Boolean isSingle);
 
+    /**
+     * 批量删除文件
+     * @param ids
+     * @return
+     */
+     void remove(Long[] ids);
+
 }
