@@ -62,6 +62,7 @@ public class AttachmentController extends BaseController {
     public R<Boolean> remove(@RequestParam("ids") Long[] ids){
         attachmentService.remove(ids);
         return this.success(true);
+        // 
     }
 
 
