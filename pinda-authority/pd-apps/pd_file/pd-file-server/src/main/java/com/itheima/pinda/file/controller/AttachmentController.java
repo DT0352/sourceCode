@@ -55,6 +55,8 @@ public class AttachmentController extends BaseController {
         }
         AttachmentDTO attachmentDTO = attachmentService.upload(multipartFile,bizId,bizType,id,isSingle);
         return this.success(attachmentDTO);
+
+
     }
     @ApiOperation(value = "附件删除", notes = "附件删除")
     @ApiImplicitParams({@ApiImplicitParam(name = "ids",value = "文件ids",dataType = "array",paramType = "query")})
@@ -62,7 +64,7 @@ public class AttachmentController extends BaseController {
     public R<Boolean> remove(@RequestParam("ids") Long[] ids){
         attachmentService.remove(ids);
         return this.success(true);
-        // 
+        ///
     }
 
 
