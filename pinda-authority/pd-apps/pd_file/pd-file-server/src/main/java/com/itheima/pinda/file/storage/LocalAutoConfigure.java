@@ -83,6 +83,7 @@ public class LocalAutoConfigure {
                     fileDeleteDO.getRelativePath(),
                     fileDeleteDO.getFileName()).toString());
             FileUtil.del(file);
+            // 
         }
     }
 }
