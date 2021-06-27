@@ -30,4 +30,10 @@ public interface AttachmentService extends IService<Attachment> {
      */
      void remove(Long[] ids);
 
+    /**
+     * 根据业务ID或业务类型删除附件
+     * @param bizId
+     * @param bizType
+     */
+    void removeByBizIdAndBizType(String bizId, String bizType);
 }

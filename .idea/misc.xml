@@ -10,6 +10,10 @@
         <option value="$PROJECT_DIR$/pinda-authority/pom.xml" />
         <option value="$PROJECT_DIR$/pinda-authority/pd-apps/pom.xml" />
         <option value="$PROJECT_DIR$/pinda-authority/pd-tools/pom.xml" />
+        <option value="$PROJECT_DIR$/source_code_shiro_renren_fast/renren-fast/jdk8-test/pom.xml" />
+        <option value="$PROJECT_DIR$/jdk8_test/pom.xml" />
+        <option value="$PROJECT_DIR$/session_redis/pom.xml" />
+        <option value="$PROJECT_DIR$/../tank/pom.xml" />
       </list>
     </option>
   </component>

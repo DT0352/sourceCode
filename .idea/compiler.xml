@@ -8,29 +8,35 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="pd-file-entity" />
-        <module name="pinda-authority" />
         <module name="pd-file-server" />
         <module name="pd-tools-databases" />
-        <module name="pd-tools-user" />
         <module name="pd-gateway" />
         <module name="pd-tools-j2cache" />
-        <module name="pd-tools-xss" />
         <module name="pd-tools-core" />
-        <module name="pd-tools-validator" />
         <module name="pd-auth-server" />
-        <module name="pd-tools-dozer" />
-        <module name="pd-tools-common" />
         <module name="pd-tools-swagger2" />
         <module name="source_shiro_renren-fast" />
+        <module name="pd-tools-jwt" />
+        <module name="pd-tools-log" />
+        <module name="tank" />
+        <module name="pinda-authority" />
+        <module name="pd-tools-user" />
+        <module name="pd-tools-xss" />
+        <module name="jdk8_test" />
+        <module name="pd-tools-validator" />
+        <module name="pd-tools-dozer" />
+        <module name="pd-tools-common" />
+        <module name="session_redis" />
         <module name="pd-auth-entity" />
         <module name="springmvc_demo" />
-        <module name="pd-tools-jwt" />
         <module name="source_code_shiro" />
         <module name="pd-auth-api" />
-        <module name="pd-tools-log" />
+        <module name="jdk8-test" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="jdk8-test" target="8" />
+      <module name="jdk8_test" target="8" />
       <module name="pd-apps" target="1.8" />
       <module name="pd-auth" target="1.8" />
       <module name="pd-auth-api" target="1.8" />
@@ -53,10 +59,12 @@
       <module name="pd-tools-xss" target="1.8" />
       <module name="pd_file" target="8" />
       <module name="pinda-authority" target="1.5" />
+      <module name="session_redis" target="8" />
       <module name="source_code_shiro" target="1.8" />
       <module name="source_shiro_renren-fast" target="1.8" />
       <module name="sourcecodeshiro" target="1.8" />
       <module name="springmvc_demo" target="1.8" />
+      <module name="tank" target="8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -79,6 +87,7 @@
       <module name="pd-tools-validator" options="-parameters" />
       <module name="pd-tools-xss" options="-parameters" />
       <module name="pd_file" options="-parameters" />
+      <module name="session_redis" options="-parameters" />
       <module name="source_shiro_renren-fast" options="-parameters" />
     </option>
   </component>

@@ -22,6 +22,7 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.UUID;
 
@@ -83,7 +84,8 @@ public class LocalAutoConfigure {
                     fileDeleteDO.getRelativePath(),
                     fileDeleteDO.getFileName()).toString());
             FileUtil.del(file);
-            ///
+            new ArrayList<>();
+            ////
         }
     }
 }

@@ -1,6 +1,5 @@
 package com.itheima.pinda.file.service.impl;
 
-import cn.hutool.core.util.IdUtil;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.itheima.pinda.base.id.IdGenerate;
@@ -15,7 +14,6 @@ import com.itheima.pinda.file.entity.File;
 import com.itheima.pinda.file.service.AttachmentService;
 import com.itheima.pinda.file.strategy.FileStrategy;
 import com.itheima.pinda.utils.DateUtils;
-import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -89,6 +87,16 @@ public class AttachmentServiceImpl extends ServiceImpl<AttachmentMapper, Attachm
         fileStrategy.deleteFile(collect);
         // 设置数据库
         super.removeByIds(Arrays.asList(ids));
+    }
+
+    @Override
+    public void removeByBizIdAndBizType(String bizId, String bizType) {
+
+        List<Attachment> list = super.list(Wrappers.<Attachment>lambdaQuery().eq(Attachment::getBizId, bizId).eq(Attachment::getBizType, bizType));
+        if (list.isEmpty()) {
+            return;
+        }
+        remove(list.stream().mapToLong(Attachment::getId).boxed().toArray(Long[]::new));
     }
 
     private void setDate(Attachment file) {

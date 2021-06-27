@@ -4,6 +4,7 @@ import com.itheima.pinda.base.BaseController;
 import com.itheima.pinda.base.R;
 import com.itheima.pinda.exception.code.ExceptionCode;
 import com.itheima.pinda.file.dto.AttachmentDTO;
+import com.itheima.pinda.file.dto.AttachmentRemoveDTO;
 import com.itheima.pinda.file.service.AttachmentService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -65,6 +66,15 @@ public class AttachmentController extends BaseController {
         return this.success(true);
         ///
     }
+    @ApiOperation(value = " 根据业务类型或业务ID删除附件", notes = "根据业务类型或业务ID删除附件")
+    @ApiImplicitParams({@ApiImplicitParam(name = "ids",value = "文件ids",dataType = "array",paramType = "query")})
+    @DeleteMapping("/biz")
+    public R<Boolean> remove(@RequestBody AttachmentRemoveDTO dto){
+        attachmentService.removeByBizIdAndBizType(dto.getBizId(), dto.getBizType());
+        return this.success(true);
+        ///
+    }
+
 
 
 
