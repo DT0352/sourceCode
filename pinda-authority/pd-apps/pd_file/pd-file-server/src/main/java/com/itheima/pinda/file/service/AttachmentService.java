@@ -5,6 +5,9 @@ import com.itheima.pinda.file.dto.AttachmentDTO;
 import com.itheima.pinda.file.entity.Attachment;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * 附件上传
  *
@@ -36,4 +39,6 @@ public interface AttachmentService extends IService<Attachment> {
      * @param bizType
      */
     void removeByBizIdAndBizType(String bizId, String bizType);
+
+    void down(Long[] ids, HttpServletRequest request, HttpServletResponse response) throws Exception;
 }
