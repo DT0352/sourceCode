@@ -2,6 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/mybatis-source" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/source_code_shiro_renren_fast/renren-fast" vcs="Git" />
   </component>
 </project>
