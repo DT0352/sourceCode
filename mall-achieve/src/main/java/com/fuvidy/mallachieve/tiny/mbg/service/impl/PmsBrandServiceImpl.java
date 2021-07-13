@@ -6,6 +6,7 @@ import com.fuvidy.mallachieve.tiny.mbg.model.PmsBrandExample;
 import com.fuvidy.mallachieve.tiny.mbg.service.PmsBrandService;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ import java.util.List;
  * @Since 1.0
  * @Date 2021/7/11
  */
+@Service
 public class PmsBrandServiceImpl implements PmsBrandService {
     @Autowired
     private PmsBrandMapper brandMapper;

@@ -1,5 +1,6 @@
 package com.fuvidy.mallachieve.tiny.mbg.config;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -9,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
  * @Since 1.0
  * @Date 2021/7/11
  */
-@Configuration("com.fuvidy.mallachieve.tiny.mbg.mapper")
+@Configuration
+@MapperScan("com.fuvidy.mallachieve.tiny.mbg.mapper")
 public class MyBatisConfig {
 }
