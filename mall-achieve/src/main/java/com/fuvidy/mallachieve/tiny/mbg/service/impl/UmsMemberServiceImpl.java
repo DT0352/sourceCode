@@ -31,7 +31,7 @@ public class UmsMemberServiceImpl implements UmsMemberService {
         StringBuilder sb = new StringBuilder();
         Random random = new Random();
         for (int i = 0; i < 6; i++) {
-            sb.append(random.nextInt());
+            sb.append(random.nextInt(9));
         }
         redisService.set(REDIS_KEY_PREFIX_AUTH_CODE + telephone, sb.toString());
         redisService.expire(REDIS_KEY_PREFIX_AUTH_CODE + telephone, AUTH_CODE_EXPIRE_SECONDS);
@@ -45,7 +45,7 @@ public class UmsMemberServiceImpl implements UmsMemberService {
         }
         String realAuthCode = redisService.get(REDIS_KEY_PREFIX_AUTH_CODE + telephone);
         boolean equals = authCode.equals(realAuthCode);
-        if (equals){
+            if (equals){
             return CommonResult.success("校验成功");
         }else {
             return CommonResult.failed("校验失败");
