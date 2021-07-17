@@ -1,16 +1,14 @@
 package com.fuvidy.mallachieve.tiny.mbg.controller;
 
 import com.fuvidy.mallachieve.tiny.mbg.common.api.CommonResult;
-import com.fuvidy.mallachieve.tiny.mbg.service.RedisService;
 import com.fuvidy.mallachieve.tiny.mbg.service.UmsMemberService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @Description
+ * @Description 会员登陆注册 接口
  * @Author 付志东
  * @Version V1.0.0
  * @Since 1.0

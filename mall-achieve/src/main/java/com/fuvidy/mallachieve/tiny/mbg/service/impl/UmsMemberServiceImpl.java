@@ -5,7 +5,6 @@ import com.fuvidy.mallachieve.tiny.mbg.service.RedisService;
 import com.fuvidy.mallachieve.tiny.mbg.service.UmsMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
