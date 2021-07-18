@@ -2,6 +2,7 @@ package com.fuvidy.mallachieve.tiny.mbg.service.impl;
 
 import com.fuvidy.mallachieve.tiny.mbg.model.UmsAdmin;
 import com.fuvidy.mallachieve.tiny.mbg.service.UmsAdminService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.security.Permission;
@@ -16,8 +17,11 @@ import java.util.List;
  */
 @Service
 public class UmsAdminServiceImpl implements UmsAdminService {
+    @Autowired
+    private
     @Override
     public UmsAdmin register(UmsAdmin umsAdminParam) {
+
         return null;
     }
 
