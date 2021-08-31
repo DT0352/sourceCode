@@ -3,10 +3,41 @@
   <component name="CompilerConfiguration">
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="pd-file-entity" />
+        <module name="pd-file-server" />
+        <module name="pd-tools-databases" />
+        <module name="pd-gateway" />
+        <module name="pd-tools-j2cache" />
+        <module name="pd-tools-core" />
+        <module name="pd-auth-server" />
+        <module name="pd-tools-swagger2" />
+        <module name="source_shiro_renren-fast" />
+        <module name="pd-tools-jwt" />
+        <module name="tank" />
+        <module name="pd-tools-log" />
+        <module name="untitled" />
+        <module name="rabbitmq-demo" />
+        <module name="pinda-authority" />
+        <module name="pd-tools-user" />
+        <module name="spring-async" />
+        <module name="pd-tools-xss" />
+        <module name="jdk8_test" />
+        <module name="pd-tools-validator" />
+        <module name="pd-tools-dozer" />
+        <module name="pd-tools-common" />
+        <module name="session_redis" />
+        <module name="pd-auth-entity" />
+        <module name="springmvc_demo" />
+        <module name="source_code_shiro" />
+        <module name="pd-auth-api" />
+        <module name="jdk8-test" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="jdk8-test" target="8" />
-      <module name="mybatis-source" target="8" />
       <module name="sourcecodeshiro" target="1.8" />
     </bytecodeTargetLevel>
   </component>
@@ -32,6 +63,7 @@
       <module name="pd_file" options="-parameters" />
       <module name="session_redis" options="-parameters" />
       <module name="source_shiro_renren-fast" options="-parameters" />
+      <module name="spring-async" options="" />
     </option>
   </component>
 </project>
